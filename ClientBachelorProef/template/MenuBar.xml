@@ -1,0 +1,12 @@
+<document>
+	<menuBarTemplate>
+		<menuBar>
+			<menuItem selectTargetURL="template/NextPage.xml">
+				<title>Next</title>
+			</menuItem>
+			<menuItem selectTargetURL="template/OtherPage.xml">
+				<title>Next2</title>
+			</menuItem>
+		</menuBar>
+	</menuBarTemplate>
+</document>
