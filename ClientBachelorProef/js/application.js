@@ -61,10 +61,10 @@ function createMainMenu(){
   <alertTemplate>
     <title>Bachelor proef applicatie</title>
     <button>
-      <text>Template1</text>
+      <text>Albums</text>
     </button>
     <button>
-      <text>Template2</text>
+      <text>MenuBar</text>
     </button>
   </alertTemplate>
 </document>`
@@ -82,7 +82,7 @@ function addEventListenerToButton(doc){
   var buttonStack = buttonElements.item(0);
   var buttonMenuBar = buttonElements.item(1);
 
-  buttonStack.addEventListener("select", function(){ getJSONDocument("json/placeholder.json")}, false);
+  buttonStack.addEventListener("select", function(){ getJSONDocument("json/Albums.json")}, false);
   buttonMenuBar.addEventListener("select", function(){ 
     menuBarDoc = baseURL + "template/MenuBar.xml";
     menuBarController.loadAndPushDocument(menuBarDoc);

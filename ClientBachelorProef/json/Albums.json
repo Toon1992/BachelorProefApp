@@ -1,0 +1,74 @@
+ [ 
+  {
+    "albumId": 1,
+    "id": 1,
+	"artist": "Pink Floyd",
+    "title": "Dark Side of the Moon",
+    "url": "https://images-na.ssl-images-amazon.com/images/I/31ESVCFE0SL._SL160_.jpg"
+    
+  },
+  {
+    "albumId": 1,
+    "id": 2,
+    "artist": "Led Zeppelin",
+    "title": "Led Zeppelin IV",
+    "url": "https://images-na.ssl-images-amazon.com/images/I/61E-tasCArL._SL160_.jpg"
+  },
+  {
+    "albumId": 1,
+    "id": 3,
+   "artist": "The Beatles",
+    "title": "Sgt. Perppers Lonely Heart Club Band",
+    "url": "https://images-na.ssl-images-amazon.com/images/I/61zHHK4jk8L._SL160_.jpg"
+  },
+  {
+    "albumId": 1,
+    "id": 4,
+   "artist": "AC/DC",
+    "title": "Back in Black",
+    "url": "https://images-na.ssl-images-amazon.com/images/I/31XXJ7KVAGL._SL160_.jpg"
+  },
+  {
+    "albumId": 1,
+    "id": 5,
+    "artist": "Pink Floyd",
+    "title": "The Wall",
+    "url": "https://images-na.ssl-images-amazon.com/images/I/51GtHoLrzcL._SL160_.jpg"
+  },
+  {
+    "albumId": 1,
+    "id": 6,
+   "artist": "Rush",
+    "title": "Moving Pictures",
+    "url": "https://images-na.ssl-images-amazon.com/images/I/51Uv3WZn30L._SL160_.jpg"
+  },
+  {
+    "albumId": 1,
+    "id": 7,
+   "artist": "The Who",
+    "title": "Who's Next",
+    "url": "https://images-na.ssl-images-amazon.com/images/I/61Ab-td5fbL._SL160_.jpg"
+  },
+  {
+    "albumId": 1,
+    "id": 8,
+	"artist": "Led Zeppelin",
+    "title": "Led Zeppelin II",
+    "url": "https://images-na.ssl-images-amazon.com/images/I/51MpGQsJGPL._SL160_.jpg"
+  },
+  {
+    "albumId": 1,
+    "id": 9,
+   "artist": "Deep purple",
+    "title": "Machine Head",
+    "url": "https://images-na.ssl-images-amazon.com/images/I/41PFRYQ6WML._SL160_.jpg"
+  },
+  
+  {
+    "albumId": 1,
+    "id": 10,
+	"artist": "Black Sabbath",
+    "title": "Paranoid",
+    "url": "https://images-na.ssl-images-amazon.com/images/I/417H76FB1CL._SL160_.jpg"
+  }
+  ]

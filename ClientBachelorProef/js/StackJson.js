@@ -7,13 +7,11 @@ var Stack = {
 		var albums ="";
 
 		for(i = 0; i < result.length; i++) {
-       albums += '<lockup><img src="' + baseURL + result[i].thumbnailUrl + '" width="182" height="274" /><title>' + result[i].title + '</title></lockup>';
+       albums += '<lockup><img src="' + result[i].url + '" width="182" height="274" /><title>' + result[i].artist + '</title></lockup>';
    }
 
-		var template = '<document><stackTemplate><banner><title>Json shelf</title></banner><collectionList><shelf><section>' + albums + '</section></shelf></collectionList></stackTemplate></document>';
-
-		var templateParser = new DOMParser();
-		var parsedTemplate = templateParser.parseFromString(template, "application/xml");
+		var template = '<document><stackTemplate><banner><title>Top 10 albums</title></banner><collectionList><shelf><section>' + albums + '</section></shelf></collectionList></stackTemplate></document>';
+		var parsedTemplate = Controller.makeDocument(template)
 
 		Controller.pushDocument(parsedTemplate);
 	},
