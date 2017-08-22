@@ -1,61 +1,49 @@
 var Stack = {
+    readAlbums : [],
+    albums : "",
 	parseJson : function(info, baseURL){
-		console.log(info);
 		var result = JSON.parse(info);
 		
-
-		var albums ="";
-
 		for(i = 0; i < result.length; i++) {
-       albums += '<lockup><img src="' + result[i].url + '" width="182" height="274" /><title>' + result[i].artist + '</title></lockup>';
+       this.albums += '<lockup itemID="' + result[i].id + '"><img src="' + result[i].url + '" width="182" height="274" /><title>' + result[i].artist + '</title></lockup>';
+
+       var album = {id:result[i].id, artist:result[i].artist, url:result[i].url,title:result[i].title};
+       this.readAlbums.push(album);
    }
 
-		var template = '<document><stackTemplate><banner><title>Top 10 albums</title></banner><collectionList><shelf><section>' + albums + '</section></shelf></collectionList></stackTemplate></document>';
-		var parsedTemplate = Controller.makeDocument(template)
-
+		var template = '<document><stackTemplate><banner><title>Top 10 albums</title></banner><collectionList><shelf><section>' + this.albums + '</section></shelf></collectionList></stackTemplate></document>';
+        var parsedTemplate = Controller.makeDocument(template);
 		Controller.pushDocument(parsedTemplate);
-	},
-
-	parsePrototypeJson : function(info, baseURL){
-		var results = JSON.parse(info);
-   		let parsedTemplate = templateDocument();
-    	Controller.pushDocument(parsedTemplate);
- 
-    	let shelf = parsedTemplate.getElementsByTagName("shelf").item(0);
-    	let section = shelf.getElementsByTagName("section").item(0);
- 
-    	section.dataItem = new DataItem();
-   
-    	let newItems = results.map((result) => {
-        	let objectItem = new DataItem(result.albumId, result.id);
-        	objectItem.url = result.thumbnailUrl;
-        	objectItem.title = result.title;
-        	return objectItem;
-    	});
- 
-    	section.dataItem.setPropertyPath("images", newItems);
-	},
+        addEvent(parsedTemplate);
+	}
 }
 
-function templateDocument() {
-    let template = `<?xml version="1.0" encoding="UTF-8" ?>
-                    <document>
-                        <stackTemplate>
-                            <banner>
-                                <title>JSON Shelf</title>
-                            </banner>
-                            <collectionList>
-                                <shelf>
-                                    <prototypes>
-                                        <lockup prototype="1">
-                                            <img binding="@src:{thumbnailUrl};" width="200" height="300"/>
-                                            <title binding="textContent:{title};" />
-                                        </lockup>
-                                    </prototypes>
-                                    <section binding="items:{images};" />
-                                </shelf>
-                            </collectionList>
-                        </stackTemplate>
-                    </document>`;
-    return Controller.makeDocument(template);
+function addEvent(parsedTemplate){
+    var list = parsedTemplate.getElementsByTagName("collectionList").item(0).getElementsByTagName("section").item(0).getElementsByTagName("lockup");
+
+    for(i = 0; i < Stack.readAlbums.length; i++){
+        list.item(i).addEventListener("select", function(event){
+                 console.log("Ik kom hier voorbij");
+        var selectedElement = event.target;
+
+        var id = selectedElement.getAttribute("itemID");
+        console.log(id);
+        if(!id){
+            return;
+        }
+
+        createProduct(Stack.readAlbums[id-1]);
+        }, false);
+    }
+}
+
+https://www.clker.com/cliparts/T/O/2/h/I/8/return-button.svg
+
+function createProduct(album){
+    console.log(album);
+    let template = '<document><productTemplate><banner><stack><title>' + album.title + '</title><description> Made by: ' + album.artist + '</description><row><buttonLockup><badge src="http://www.freeiconspng.com/uploads/undo-back-return-button-png-3.png"/></buttonLockup></row></stack><heroImg src="' + album.url + '"/></banner><shelf><header><title>Top 10 Albums</title></header><section>' + Stack.albums + '</section></shelf></productTemplate></document>';
+    console.log(template);
+
+    var temp = Controller.makeDocument(template);
+    Controller.pushDocument(temp);
 }
